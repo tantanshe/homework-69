@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../app/hooks';
-import {fetchSearches, setInput, setShowSearches} from '../store/searchesSlice';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
+import {fetchSearches, setInput} from '../../store/searchesSlice';
 import {Link} from 'react-router-dom';
-import Spinner from './Spinner/Spinner';
+import Spinner from '../Spinner/Spinner';
+import './Search.css';
 
 const Search = () => {
   const dispatch = useAppDispatch();
@@ -27,21 +28,24 @@ const Search = () => {
   }, [dispatch, input]);
 
   return (
-    <div>
+    <div className="search-box mt-3">
       <input
         type="text"
         value={input}
         onChange={handleInputChange}
         placeholder="Type in the name of the show"
+        className="form-control"
       />
       {loading && <Spinner/>}
       {error && <h2>Error loading data</h2>}
       {searches.length > 0 && (
         <div className="autocomplete-block">
           {searches.map((search) => (
-            <Link to={`/shows/${search.show.id}`} key={search.show.id} onClick={handleSearchClick}>
-              {search.show.name}
-            </Link>
+            <div className="autocomplete-item" key={search.show.id}>
+              <Link to={`/shows/${search.show.id}`} onClick={handleSearchClick}>
+                {search.show.name}
+              </Link>
+            </div>
           ))}
         </div>
       )}

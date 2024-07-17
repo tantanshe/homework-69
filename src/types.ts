@@ -4,8 +4,8 @@ export interface Show {
   genres: [];
   summary: string;
   image: {
-    medium: string;
-  }
+    original: string;
+  };
 }
 
 export interface SearchApi {
