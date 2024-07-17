@@ -3,7 +3,9 @@ export interface Show {
   name: string;
   genres: [];
   summary: string;
-  image: string;
+  image: {
+    medium: string;
+  }
 }
 
 export interface SearchApi {
