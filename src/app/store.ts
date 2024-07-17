@@ -1,7 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
+import {searchesSlice} from '../store/searchesSlice';
+import {showsSlice} from '../store/showsSlice';
 
 export const store = configureStore({
   reducer: {
+    searches: searchesSlice.reducer,
+    shows: showsSlice.reducer,
   }
 });
 
