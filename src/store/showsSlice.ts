@@ -25,7 +25,6 @@ export const showsSlice = createSlice({
   initialState,
   reducers: {
     emptyReducer: (state) => {
-
     }
   },
   extraReducers: (builder) => {

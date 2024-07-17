@@ -28,7 +28,7 @@ export const searchesSlice = createSlice({
   reducers: {
     setInput: (state, action: PayloadAction<string>) => {
       state.input = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,6 +47,6 @@ export const searchesSlice = createSlice({
   },
 });
 
-export const {setInput} = searchesSlice.actions;
+export const {setInput, setShowSearches} = searchesSlice.actions;
 
 export default searchesSlice.reducer;

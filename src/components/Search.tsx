@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../app/hooks';
-import {fetchSearches, setInput} from '../store/searchesSlice';
+import {fetchSearches, setInput, setShowSearches} from '../store/searchesSlice';
 import {Link} from 'react-router-dom';
 import Spinner from './Spinner/Spinner';
 
@@ -16,11 +16,15 @@ const Search = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    dispatch(fetchSearches(''));
+  };
+
   useEffect(() => {
     if (input.length > 0) {
       dispatch(fetchSearches(input));
     }
-  }, [input]);
+  }, [dispatch, input]);
 
   return (
     <div>
@@ -35,7 +39,7 @@ const Search = () => {
       {searches.length > 0 && (
         <div className="autocomplete-block">
           {searches.map((search) => (
-            <Link to={`/shows/${search.show.id}`} key={search.show.id}>
+            <Link to={`/shows/${search.show.id}`} key={search.show.id} onClick={handleSearchClick}>
               {search.show.name}
             </Link>
           ))}
